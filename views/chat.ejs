@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Chat</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="col-lg-12">
+      <div class="card chat-app">
+
+        <div id="plist" class="people-list">
+          <ul class="list-unstyled chat-list mt-2 mb-0">
+            <li class="clearfix">
+              <img src="images/avatar1.png" alt="avatar">
+              <div class="about">
+                <div class="name">Vincent Porter</div>
+                <div class="status"> <i class="fa fa-circle online"></i> Online </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="chat">
+          <div class="chat-header clearfix">
+            <div class="row">
+              <div class="col-lg-6">
+                <h2 style="color: #59238F;">Chat Room</h2>
+              </div>
+              <div class="col-lg-6 hidden-sm text-right">
+                <a href="javascript:void(0);" class="btn btn-outline-secondary"><i class="fa fa-camera"></i></a>
+                <a href="javascript:void(0);" class="btn btn-outline-primary"><i class="fa fa-image"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="chat-history">
+            <ul id="messages" class="m-b-0">
+
+            </ul>
+          </div>
+          <div class="chat-message">
+            <form id="form" action="">
+              <input id="input" autocomplete="off" /><button>Send</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io();
+
+    var messages = document.getElementById('messages');
+    var form = document.getElementById('form');
+    var input = document.getElementById('input');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (input.value) {
+        socket.emit('chat message', input.value);
+        input.value = '';
+      }
+    });
+
+    socket.on('chat message', function(msg) {
+      var item = document.createElement('li');
+      var block = document.createElement("div");
+      block.setAttribute("class", "message-data");
+      var spanDateTime = document.createElement("span");
+      block.appendChild(spanDateTime);
+      var contentBlock = document.createElement("p");
+      contentBlock.textContent = msg;
+      block.appendChild(contentBlock);
+      item.appendChild(block);
+      messages.appendChild(item);
+      window.scrollTo(0, document.body.scrollHeight);
+    });
+  </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title></title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/e4f72d78f3.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body>
+  <div class="loginBox"> <img class="user" src="images/avatar3.png" height="100px" width="100px">
+
+    <h3>Login to Chat</h3>
+
+    <div class="row">
+      <div class="col-md-12">
+        <a class="btn btn-outline-dark" href="" role="button" style="text-transform:none">
+          <i class="fa-brands fa-google"></i>  Login with Google
+        </a>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col-md-12">
+        <a class="btn btn-outline-dark" href="" role="button" style="text-transform:none">
+          <i class="fa-brands fa-facebook"></i>  Login with Facebook
+        </a>
+      </div>
+    </div>
+
+    <br>
+    <form action="/login" method="post">
+
+      <div class="inputBox">
+        <input id="uname" type="text" name="Username" placeholder="Username">
+        <input id="key" type="key" name="Key" placeholder="Room Key">
+      </div>
+
+      <input type="submit" name="" value="Login">
+
+    </form>
+
+    <a href="#">Forget Password<br></a>
+    <br>
+    <div class="text-center">
+      <a href="/signUp">Sign-Up</a>
+    </div>
+
+  </div>
+
+</body>
+
+</html>
